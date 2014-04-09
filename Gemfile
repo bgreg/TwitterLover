@@ -42,5 +42,3 @@ gem 'geokit-rails'
 # Heroku requirements 
 gem 'rails_12factor', group: :production
 ruby '2.0.0' 
-gem 'mongo'
-gem 'bson_ext'

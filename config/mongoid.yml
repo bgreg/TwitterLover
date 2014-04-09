@@ -78,53 +78,42 @@ test:
         # low amounts for fast failures.
         max_retries: 1
         retry_interval: 0
+# mongoid 3.x
+#
+# As discussed in: http://blog.mongolab.com/2014/02/mongodb-driver-tips-tricks-mongoid-3
+#
 production:
-  # This starts the session configuration settings. You may have as
-  # many sessions as you like, but you must have at least 1 named
-  # 'default'.
   sessions:
-    # Define the default session.
     default:
-      uri: mongodb://dbuser:dbpass@host:port/dbname
-      # A session can have any number of hosts. Usually 1 for a single
-      # server setup, and at least 3 for a replica set. Hosts must be
-      # an array of host:port pairs. This session is single server.
-      hosts:
-        - flame.mongohq.com:27017
-      # Define the default database name.
-      database: twitter_love_production
-      # Since this database points at a session connected to MongoHQ, we must
-      # provide the authentication details.
-      username: user
-      password: password
-    # This defines a secondary session at a replica set.
-    replica_set:
-      # This configuration is a 3 node replica set.
-      hosts:
-        - dedicated1.myapp.com:27017
-        - dedicated2.myapp.com:27017
-        - dedicated3.myapp.com:27017
-      database: mongoid
-      # We can set session specific options, like reads executing
-      # on secondary nodes, and defaulting the session to safe mode.
+      # The standard MongoDB connection URI allows for easy
+      # replica set connection setup.
+      # Use environment variables or a config file to keep your
+      # credentials safe.
+      uri: 'mongodb://heroku_app23919855:<dbpassword>@ds033907.mongolab.com:33907/heroku_app23919855'
+
       options:
-        consistency: :eventual
-        safe: true
-  # Here we put the Mongoid specific configuration options. These are explained
-  # in more detail next.
-  options:
-    allow_dynamic_fields: false
-    identity_map_enabled: true
-    include_root_in_json: true
-    include_type_for_serialization: true
-    # Note this can also be true if you want to preload everything, but this is
-    # almost never necessary. Most of the time set this to false.
-    preload_models:
-      - Canvas
-      - Browser
-      - Firefox
-    scope_overwrite_exception: true
-    raise_not_found_error: false
-    skip_version_check: false
-    use_activesupport_time_zone: false
-    use_utc: true
+        # The default consistency is :eventual, which reads from
+        #secondaries when possible.
+        # Strong forces reads to primary.
+        # We recommend using strong consistency.
+        consistency: :strong
+
+        # max_retries specifies the number of times to attempt
+        # an operation before giving up.
+        max_retries: 30
+
+        # retry_interval specifies the number of seconds to wait
+        # before retrying a single operation.
+        retry_interval: 1
+
+        # The default timeout is 5, which is the time in seconds
+        # for an operation to time out.
+        # We recommend 15 because it allows for plenty of time
+        # in most operating environments.
+        # Mongoid doubles the configured value (known issue) so
+        # 15 results in a timeout of 30s.
+        # Note that if you have a long-running query
+        # (over 30 seconds), it will time out.
+        # See our example for long-running queries in the blog
+        # post referenced above.
+        timeout: 15

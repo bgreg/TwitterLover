@@ -11,14 +11,18 @@ Commands used initial rails setup
  rails g foundation:install  ( like twitter bootstrap for rails )
  rails g mongoid:config
  rails g rspec:install
+ heroku addons:add mongolab:starter
+ heroku addons:open mongolab
 
 Heroku startup
 
  - download heroku toolbelt for osx
  - follow:  https://toolbelt.heroku.com/osx
+ - mongolab: Use `heroku addons:docs mongolab` to view documentation.
 
-Additional resources I found helpful 
+Additional resources I found helpful
   - http://robots.thoughtbot.com/test-rake-tasks-like-a-boss
+  - https://devcenter.heroku.com/articles/getting-started-with-rails3
 
 Mongoid Rake Tasks
   db:create: Exists only for dependency purposes, does not actually do anything.
