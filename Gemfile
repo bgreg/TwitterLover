@@ -33,5 +33,5 @@ gem 'debugger'
 
 gem 'mongoid'
 gem 'font-awesome-rails'
-gem 'zurb-foundation'
+gem 'foundation-rails'
 gem 'tweetstream'
