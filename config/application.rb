@@ -68,7 +68,6 @@ module TwitterLover
     config.assets.version = '1.0'
 
     config.mongoid.logger = Logger.new($stdout, :warn)
-    config.mongoid.persist_in_safe_mode = true
 
     # In order to properly set up single collection inheritance, 
     # Mongoid needs to preload all models before every request in 
