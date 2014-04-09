@@ -62,5 +62,14 @@ module TwitterLover
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    config.mongoid.logger = Logger.new($stdout, :warn)
+    config.mongoid.persist_in_safe_mode = true
+
+    # In order to properly set up single collection inheritance, 
+    # Mongoid needs to preload all models before every request in 
+    # development mode. This can get slow, so if you are not using 
+    # any inheritance it is recommended you turn this feature off.
+    # config.mongoid.preload_models = false
   end
 end
