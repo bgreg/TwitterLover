@@ -6,4 +6,8 @@ describe Tweet do
     tweet.should be_an_instance_of( Tweet )
   end
 
+  it "should import 2 objects from a stream" do
+    objects = Tweet.import(2)
+    objects.count.should eq(2)
+  end
 end
