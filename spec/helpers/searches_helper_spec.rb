@@ -10,5 +10,5 @@ require 'spec_helper'
 #     end
 #   end
 # end
-describe SearchHelper do
+describe SearchesHelper do
 end

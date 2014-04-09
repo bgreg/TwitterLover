@@ -1,4 +1,6 @@
 TwitterLover::Application.routes.draw do
+  root to: "searches#new"
+  resources :searches
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
