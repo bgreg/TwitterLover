@@ -89,11 +89,11 @@ production:
       # replica set connection setup.
       # Use environment variables or a config file to keep your
       # credentials safe.
-      uri: 'mongodb://heroku_app23919855:<dbpassword>@ds033907.mongolab.com:33907/heroku_app23919855'
+      uri: <%= ENV['MONGOHQ_URL'] %> 
 
       options:
         # The default consistency is :eventual, which reads from
-        #secondaries when possible.
+        # secondaries when possible.
         # Strong forces reads to primary.
         # We recommend using strong consistency.
         consistency: :strong
@@ -117,3 +117,9 @@ production:
         # See our example for long-running queries in the blog
         # post referenced above.
         timeout: 15
+
+        max_retries_on_connection_failure: 20
+
+        # from mongohq
+        safe_mode: true
+        skip_version_check: true
