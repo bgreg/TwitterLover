@@ -75,5 +75,9 @@ module TwitterLover
     # development mode. This can get slow, so if you are not using 
     # any inheritance it is recommended you turn this feature off.
     # config.mongoid.preload_models = false
+    config.generators do |g|
+      g.orm :mongoid
+    end
+
   end
 end
