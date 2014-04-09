@@ -38,4 +38,7 @@ gem 'tweetstream'
 gem 'rspec-rails'
 gem 'capybara'
 gem 'geokit-rails'
+
+# Heroku requirements 
 gem 'rails_12factor', group: :production
+ruby '2.0.0' 
