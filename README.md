@@ -1,3 +1,5 @@
+heroku deployment: http://fast-ravine-1177.herokuapp.com/
+
 OSX
  brew install mongodb --with-openssl
  To have launchd start mongodb at login:
