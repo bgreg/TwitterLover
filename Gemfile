@@ -38,3 +38,4 @@ gem 'tweetstream'
 gem 'rspec-rails'
 gem 'capybara'
 gem 'geokit-rails'
+gem 'rails_12factor', group: :production
