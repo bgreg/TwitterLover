@@ -3,10 +3,15 @@
 <h5>Enter your location, and a radius and I will give you tweets in that circle</h5>
 <hr />
 
-<%= form_tag(new_search_path ) do %>
+<%= form_tag(find_me_friends_searches_path) do %>
   <%= label_tag('latitude') %>
-  <%= text_field_tag('long')  %>
+  <%= number_field_tag('long')  %>
+
   <%= label_tag('longitude') %>
-  <%= text_field_tag( 'lat') %>
+  <%= number_field_tag( 'lat') %>
+
+  <%= label_tag('radius') %>
+  <%= number_field_tag( 'rad' ) %>
+
   <%= submit_tag( 'submit', id: 'submit') %>
 <% end %>
