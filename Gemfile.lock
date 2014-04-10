@@ -100,6 +100,8 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.1)
     kgio (2.9.2)
+    launchy (2.4.2)
+      addressable (~> 2.3)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -107,8 +109,6 @@ GEM
       thread_safe (~> 0.3, >= 0.3.1)
     mime-types (1.25.1)
     mini_portile (0.5.3)
-    mongo (1.10.0)
-      bson (~> 1.10.0)
     mongoid (3.1.6)
       activemodel (~> 3.2)
       moped (~> 1.4)
@@ -231,7 +231,7 @@ DEPENDENCIES
   foundation-rails
   geokit-rails
   jquery-rails
-  mongo
+  launchy
   mongoid
   mongoid-rspec
   rails (= 3.2.17)
