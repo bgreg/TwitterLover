@@ -31,6 +31,8 @@ gem 'rspec-rails'
 gem 'capybara'
 gem 'geokit-rails'
 gem 'em-synchrony'
+gem 'mongoid-rspec'
+
 
 # Heroku requirements 
 gem 'rails_12factor', group: :production
