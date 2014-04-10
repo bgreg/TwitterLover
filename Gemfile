@@ -20,13 +20,13 @@ gem 'jquery-rails'
 
 # Use unicorn as the app server
 gem 'unicorn'
-
 gem 'mongoid'
 gem 'font-awesome-rails'
 gem 'foundation-rails'
 gem 'tweetstream'
 gem 'geokit-rails'
 gem 'em-synchrony'
+gem 'kaminari'
 
 group :test, :development do
   # To use debugger
@@ -35,7 +35,9 @@ group :test, :development do
   gem 'launchy'
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'selenium-webdriver'
 end
+
 # Heroku requirements 
 gem 'rails_12factor', group: :production
 ruby '2.0.0' 
