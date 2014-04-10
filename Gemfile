@@ -32,9 +32,7 @@ gem 'capybara'
 gem 'geokit-rails'
 gem 'em-synchrony'
 gem 'mongoid-rspec'
-gem 'mongoid_spacial'
-
-
+gem 'mongo'
 
 # Heroku requirements 
 gem 'rails_12factor', group: :production
