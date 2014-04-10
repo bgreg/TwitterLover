@@ -1,43 +1,51 @@
+class ImportTweets
+  attr_accessor :tweet_limit
+  attr_accessor :tweets
+  attr_accessor :pid
+
+  def initialize
+    @tweets = 0
+    @client = TweetStream::Client.new
+    #
+    # tweetstream client callbacks
+    #
+    @client.on_delete{|status_id,user_id| }
+    @client.on_error{|error| puts error.to_s }
+    @client.on_limit{|skip_count|  }
+    @pid = Process.pid
+  end
+
+  def start
+    EM.synchrony do
+      Signal.trap( "INT" ){ @client.stop }
+      Signal.trap( "TERM" ){ @client.stop }
+
+      @client.sample do |status,c|
+        if status.geo.kind_of? Twitter::Geo::Point
+          tweet = Tweet.new( user_name: status.user.name.to_s,
+                         geo_coordinates: status.geo.coordinates.dup,
+                         text: status.text.to_s )
+          @tweets += 1 if tweet.save
+        end
+        @client.stop if @tweet_limit && @tweets >= @tweet_limit 
+      end
+
+    end
+  end
+
+end
+
 namespace :import do
   desc "Importing tweets from twitter streaming api into local db"
   task :stream => :environment do
-    puts "Hello start"
-      import_tweets
-    puts "Hello finish"
+    import = ImportTweets.new
+    import.start
+  end
+
+  desc "Take Sample Batch of 10 tweets"
+  task :take => :environment do
+    import = ImportTweets.new
+    import.tweet_limit = 10
+    import.start
   end
 end
-
-  def import_tweets
-    TweetStream.configure do |config|
-      config.consumer_key       = '3GtoyQKKkuCu5dOJXy7wEUW27'
-      config.consumer_secret    = 'U4gyU8ATi8UrKGJc6mJq5wEZEBtCssni4Uym0AZOlfckalLUra'
-      config.oauth_token        = '1012371834-eIcrn59ZMPN51vQtrghROSGJrdplKP9rgSr8mgU'
-      config.oauth_token_secret = '1L1bSwpWTIM9DMUNLREawG5n5CtjpB6bJzo0G8pChyGks'
-      config.auth_method        = :oauth
-    end
-
-    EM.synchrony do
-      client = TweetStream::Client.new
-      Signal.trap("INT"){   client.stop }
-      Signal.trap("TERM"){  client.stop }
-
-      client.on_error do |error|
-        puts error.inspect
-      end
-
-      client.sample do |status,c|
-
-        Tweet.create( user_name: status.user.name.to_s,
-                      geo_corrdinates: status.geo.coordinates,
-                      text: status.text.to_s )
-        puts Tweet.count
-
-        if status.geo.kind_of? Twitter::Geo::Point
-          puts status.geo.coordinates.to_s
-          puts status.user.name.to_s
-          puts status.text.to_s
-        end
-      end
-    end
-end
-
