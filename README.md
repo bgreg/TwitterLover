@@ -22,31 +22,9 @@ Heroku startup
  -  follow:  https://toolbelt.heroku.com/osx
  -  mongolab: Use `heroku addons:docs mongolab` to view documentation.
 
-Additional resources I found helpful
-------------------------------------
-  - http://robots.thoughtbot.com/test-rake-tasks-like-a-boss
-  - https://devcenter.heroku.com/articles/getting-started-with-rails3
-  - http://docs.mongodb.org/manual/applications/geospatial-indexes/
-  - http://stackoverflow.com/questions/7702244/mongodb-with-mongoid-in-rails-geospatial-indexing
-
-Mongoid Rake Tasks
-------------------
- -  db:create: Exists only for dependency purposes, does not actually do anything.
- -  db:create_indexes: Reads all index definitions from the models and attempts to create them in the database.
- -  db:remove_indexes: Reads all secondary index definitions from the models and attempts to remove indexes that are not defined.
- -  db:drop: Drops all collections in the database with the exception of the system collections.
- -  db:migrate: Exists only for dependency purposes, does not actually do anything.
- -  db:purge: Deletes all data, including indexes, from the database. Since 3.1.0
- -  db:schema:load: Exists only for framework dependency purposes, does not actually do anything.
- -  db:seed: Seeds the database from db/seeds.rb
- -  db:setup: Creates indexes and seeds the database.
- -  db:test:prepare: Exists only for framework dependency purposes, does not actually do anything.
-
 
 TODO
 ----
- -  Read about Mongo GeoSpatial index, make changes to Tweet#import
- -  Create rake task to run Tweet#import
  -  Write search method in searches controller to look for tweets for a given radius in the database
  -  paginate results from search
  -  look at implementing google maps to display tweet locations
