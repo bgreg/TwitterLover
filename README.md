@@ -4,10 +4,8 @@ OSX
 ---
     brew install mongodb --with-openssl
 
- -  To have launchd start mongodb at login:
-    ln -sfv /usr/local/opt/mongodb/*.plist ~/Library/LaunchAgents
- -  Then to load mongodb now:
-    launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist
+ -  To have launchd start mongodb at login:`ln -sfv /usr/local/opt/mongodb/*.plist ~/Library/LaunchAgents`
+ -  Then to load mongodb now: `launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist`
 
 Commands used initial rails setup 
 ---------------------------------
@@ -29,6 +27,7 @@ Additional resources I found helpful
   - http://robots.thoughtbot.com/test-rake-tasks-like-a-boss
   - https://devcenter.heroku.com/articles/getting-started-with-rails3
   - http://docs.mongodb.org/manual/applications/geospatial-indexes/
+  - http://stackoverflow.com/questions/7702244/mongodb-with-mongoid-in-rails-geospatial-indexing
 
 Mongoid Rake Tasks
 ------------------
