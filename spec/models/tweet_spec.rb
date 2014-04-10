@@ -5,4 +5,8 @@ describe Tweet do
     tweet = Tweet.new
     tweet.should be_an_instance_of( Tweet )
   end
+
+  it { should validate_presence_of(:user_name) }
+  it { should validate_presence_of(:geo_coordinates) }
+  it { should validate_presence_of(:text) }
 end
