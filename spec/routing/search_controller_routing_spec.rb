@@ -29,5 +29,9 @@ describe SearchesController do
     it "routes to #destroy" do
       delete("/searches/1").should route_to("searches#destroy", id: "1")
     end
+
+    it "routes to #find_me_friends" do
+      post("/searches/find_me_friends").should route_to("searches#find_me_friends")
+    end
   end
 end
