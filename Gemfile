@@ -23,7 +23,6 @@ gem 'unicorn'
 
 # To use debugger
 gem 'debugger'
-
 gem 'mongoid'
 gem 'font-awesome-rails'
 gem 'foundation-rails'
@@ -31,6 +30,7 @@ gem 'tweetstream'
 gem 'rspec-rails'
 gem 'capybara'
 gem 'geokit-rails'
+gem 'em-synchrony'
 
 # Heroku requirements 
 gem 'rails_12factor', group: :production

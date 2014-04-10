@@ -66,6 +66,8 @@ GEM
       http_parser.rb (>= 0.6.0)
     em-socksify (0.3.0)
       eventmachine (>= 1.0.0.beta.4)
+    em-synchrony (1.0.3)
+      eventmachine (>= 1.0.0.beta.1)
     em-twitter (0.3.3)
       buftok (~> 0.2)
       eventmachine (~> 1.0)
@@ -214,6 +216,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 3.2.1)
   debugger
+  em-synchrony
   font-awesome-rails
   foundation-rails
   geokit-rails
