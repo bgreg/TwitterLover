@@ -116,6 +116,9 @@ GEM
       mongoid (~> 3.1.6)
       rake
       rspec (>= 2.14)
+    mongoid_spacial (0.2.16)
+      activesupport (~> 3.0)
+      mongoid (>= 2.3.0)
     moped (1.5.2)
     multi_json (1.9.2)
     multipart-post (2.0.0)
@@ -231,6 +234,7 @@ DEPENDENCIES
   jquery-rails
   mongoid
   mongoid-rspec
+  mongoid_spacial
   rails (= 3.2.17)
   rails_12factor
   rspec-rails

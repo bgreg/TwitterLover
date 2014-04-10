@@ -32,6 +32,8 @@ gem 'capybara'
 gem 'geokit-rails'
 gem 'em-synchrony'
 gem 'mongoid-rspec'
+gem 'mongoid_spacial'
+
 
 
 # Heroku requirements 
