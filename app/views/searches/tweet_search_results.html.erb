@@ -1,0 +1,9 @@
+<h2>Results</h2>
+
+<% @my_tweets.each do |t| %>
+  <p><%= t.user_name%></p>
+  <p><%= t.geo_coordinates%></p>
+  <p><%= t.text%></p>
+  <hr />
+<% end %>
+<%= paginate @my_tweets %>

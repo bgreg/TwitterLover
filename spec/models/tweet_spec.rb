@@ -15,4 +15,6 @@ describe Tweet do
   it { should have_field(:user_name).of_type(String)}
   it { should have_field(:geo_coordinates).of_type(Array)}
   it { should have_field(:text).of_type(String)}
+  it { should have_field(:post_id).of_type(String)}
+  it { should have_field(:post_time).of_type(String)}
 end

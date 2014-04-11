@@ -2,7 +2,7 @@ TwitterLover::Application.routes.draw do
   root to: "searches#new"
   resources :searches do 
     collection do
-      post :find_me_friends
+      get  :tweet_search_results
     end
   end
   # The priority is based upon order of creation:

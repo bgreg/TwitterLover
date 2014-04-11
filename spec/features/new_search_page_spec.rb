@@ -1,5 +1,4 @@
-# For debugging: save_and_open_page
-
+# For debugging sanity: save_and_open_page
 require 'spec_helper'
 describe "new_search page" do 
   describe "appearance" do
@@ -44,23 +43,39 @@ describe "new_search page" do
   end
 
   describe "form" do
-    before{visit '/searches/new'}
-    it "should not accept strings in the longitude field" do 
+    before{ visit '/searches/new' }
+    it "should not accept strings in the longitude field", js: true do
       fill_in "lat", with: "string example"
       click_button :submit
-      page.should_not have_content("query submitted")
+      page.should_not have_content("query accepted")
     end
 
-    it "should not accept strings in the longitude field" do 
+    it "should not accept strings in the longitude field", js: true do
       fill_in :long, with: "string example"
       click_button :submit
-      page.should_not have_content("query submitted")
+      page.should_not have_content("query accepted")
     end
 
-    it "should not accept strings in the longitude field" do 
+    it "should not accept strings in the longitude field", js: true do
       fill_in :rad, with: "string example"
       click_button :submit
-      page.should_not have_content("query submitted")
+      page.should_not have_content("query accepted")
+    end
+
+    it "should not accept negative value as radius", js: true do
+      fill_in :rad, with: -1220
+      click_button :submit
+      page.should_not have_content("query accepted")
+    end
+
+    it "should accept vald longitude, latitude, and radius", js: true do
+      fill_in :rad, with: 10
+      fill_in :long, with: 37.761523
+      fill_in :lat, with:  -122.423575
+      click_button :submit
+      uri = URI.parse(current_url)
+      "#{uri.path}?#{uri.query}".should == tweet_search_results_searches_path+"?"
     end
   end
+
 end
