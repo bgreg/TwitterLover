@@ -27,8 +27,6 @@ Heroku startup
 TODO
 ----
 
- -  Write search method in searches controller to look for tweets for a given radius in the database
- -  paginate results from search
  -  look at implementing google maps to display tweet locations
 
 Example geo searches
