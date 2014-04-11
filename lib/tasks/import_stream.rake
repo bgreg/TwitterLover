@@ -1,7 +1,6 @@
 class ImportTweets
   attr_accessor :tweet_limit
   attr_accessor :tweets
-  attr_accessor :pid
 
   def initialize
     @tweets = 0
@@ -12,7 +11,6 @@ class ImportTweets
     @client.on_delete{|status_id,user_id| }
     @client.on_error{|error| puts error.to_s }
     @client.on_limit{|skip_count|  }
-    @pid = Process.pid
   end
 
   def start
@@ -23,8 +21,10 @@ class ImportTweets
       @client.sample do |status,c|
         if status.geo.kind_of? Twitter::Geo::Point
           tweet = Tweet.new( user_name: status.user.name.to_s,
-                         geo_coordinates: status.geo.coordinates.dup,
-                         text: status.text.to_s )
+                             geo_coordinates: status.geo.coordinates.dup,
+                             text: status.text.to_s,
+                             post_id: status.id.to_i,
+                             created_at: status.created_at )
           @tweets += 1 if tweet.save
         end
         @client.stop if @tweet_limit && @tweets >= @tweet_limit 
