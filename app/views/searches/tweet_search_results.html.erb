@@ -2,6 +2,8 @@
 
 <% @my_tweets.each do |t| %>
   <p><%= t.user_name%></p>
+  <p><%= t.post_id%></p>
+  <p><%= t.created_at%></p>
   <p><%= t.geo_coordinates%></p>
   <p><%= t.text%></p>
   <hr />
