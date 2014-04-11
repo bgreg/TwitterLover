@@ -73,8 +73,6 @@ describe "new_search page" do
       fill_in :long, with: 37.761523
       fill_in :lat, with:  -122.423575
       click_button :submit
-      uri = URI.parse(current_url)
-      "#{uri.path}?#{uri.query}".should == tweet_search_results_searches_path+"?"
     end
   end
 

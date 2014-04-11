@@ -7,7 +7,7 @@ class SearchesController < ApplicationController
     long = params[:long].to_i
     rad  = params[:rad].to_i
 
-    @my_tweets = Tweet.within_circle( geo_coordinates: [[lat,long],rad]).page params[:page]
+    @my_tweets = Tweet.within_circle( geo_coordinates: [[lat,long],rad]).order_by(created_at: :dec).page params[:page]
 
     if @my_tweets
       message = { notice: "query accepted" }

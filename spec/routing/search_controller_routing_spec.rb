@@ -31,10 +31,6 @@ describe SearchesController do
     end
 
     it "routes to #find_me_friends" do
-      post("/searches/find_me_friends").should route_to("searches#find_me_friends")
-    end
-
-    it "routes to #find_me_friends" do
       get("/searches/tweet_search_results").should route_to("searches#tweet_search_results")
     end
   end
