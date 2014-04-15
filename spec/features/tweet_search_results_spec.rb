@@ -24,6 +24,9 @@ describe "results" do
       click_link "4"
       page.should have_content("Results")
     end
+    it "should have a google map div" do 
+      page.should have_css('div#map-canvas')
+    end
   end
 
 end

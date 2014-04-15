@@ -1,17 +1,23 @@
-<h4>welcome to twitter lover, where you can meet other twitter lovers near you</h4>
-<hr />
-<h5>Enter your location, and a radius and I will give you tweets in that circle</h5>
-<hr />
+<div class="row">
+  <div class="large-6 large-centered columns">
+    <h2>Welcome to twitter lover</h2>
+      <p class="lead">Where you can meet other twitter lovers near you</p>
+      <p class="label success">Now featuring floats!</p>
+    <hr />
 
-<%= form_tag(tweet_search_results_searches_path, method: "get") do %>
-  <%= label_tag('latitude') %>
-  <%= number_field_tag('long', nil, in: -200..200, required: true )  %>
+    <h5>Enter your location, and a radius and I will give you tweets in that circle</h5>
+    <hr />
+    <%= form_tag(tweet_search_results_searches_path, method: "get") do %>
+      <%= label_tag('longitude') %>
+    <%= number_field_tag( 'lat', nil, in: -200..200 , required: true, step:"any") %>
 
-  <%= label_tag('longitude') %>
-  <%= number_field_tag( 'lat', nil, in: -200..200 , required: true) %>
+    <%= label_tag('latitude') %>
+    <%= number_field_tag('long', nil, in: -200..200, required: true, step:"any" )  %>
 
-  <%= label_tag('radius') %>
-  <%= number_field_tag( 'rad', nil, in: 0..200, required: true  ) %>
+    <%= label_tag('radius') %>
+    <%= number_field_tag( 'rad', nil, in: 0..200, required: true  ) %>
 
-  <%= submit_tag( 'submit', id: 'submit') %>
-<% end %>
+    <%= submit_tag( 'submit', id: 'submit', class: "button default") %>
+  <% end %>
+  </div>
+</div>
