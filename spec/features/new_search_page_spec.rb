@@ -70,9 +70,10 @@ describe "new_search page" do
 
     it "should accept vald longitude, latitude, and radius", js: true do
       fill_in :rad, with: 10
-      fill_in :lat, with:  -122.423575
-      fill_in :long, with: 37.761523
+      fill_in :lat, with:  37.761523
+      fill_in :long, with: -122.423575
       click_button :submit
+      page.should have_content("Results")
     end
   end
 
