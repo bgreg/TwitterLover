@@ -4,8 +4,8 @@ describe "new_search page" do
   describe "appearance" do
     before{visit '/searches/new'}
 
-    it "should have text 'welcome to twitter lover, where you can meet other twitter lovers near you'" do
-      page.should have_content('welcome to twitter lover, where you can meet other twitter lovers near you')
+    it "should have text 'Welcome to twitter lover" do
+      page.should have_content('Welcome to twitter lover')
     end
 
     it "should hvae a label for long" do 
@@ -47,31 +47,31 @@ describe "new_search page" do
     it "should not accept strings in the longitude field", js: true do
       fill_in "lat", with: "string example"
       click_button :submit
-      page.should_not have_content("query accepted")
+      page.should_not have_content("Results")
     end
 
     it "should not accept strings in the longitude field", js: true do
       fill_in :long, with: "string example"
       click_button :submit
-      page.should_not have_content("query accepted")
+      page.should_not have_content("Results")
     end
 
     it "should not accept strings in the longitude field", js: true do
       fill_in :rad, with: "string example"
       click_button :submit
-      page.should_not have_content("query accepted")
+      page.should_not have_content("Results")
     end
 
     it "should not accept negative value as radius", js: true do
       fill_in :rad, with: -1220
       click_button :submit
-      page.should_not have_content("query accepted")
+      page.should_not have_content("Results")
     end
 
     it "should accept vald longitude, latitude, and radius", js: true do
       fill_in :rad, with: 10
-      fill_in :long, with: 37.761523
       fill_in :lat, with:  -122.423575
+      fill_in :long, with: 37.761523
       click_button :submit
     end
   end

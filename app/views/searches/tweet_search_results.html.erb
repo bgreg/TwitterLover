@@ -1,11 +1,53 @@
-<h2>Results</h2>
+<script type="text/javascript"
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD26TGSw0SZLE1TBVBByVcS-4_Omm8Mvzk&sensor=false">
+</script>
+<script type="text/javascript">
+  function initialize() {
+    var centerLatlng = new google.maps.LatLng(<%= params['lat'] %>, <%= params['long'] %>);
+    var mapOptions = {
+        center: centerLatlng,
+        zoom: 8
+    };
+    var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+    setMarkers(map, tweets)
+  }
+  google.maps.event.addDomListener(window, 'load', initialize);
+  var tweets = <%= @tweet_locations %>;
+  function setMarkers(map, locations) {
+    for (var i = 0; i < locations.length; i++) {
+      var myLatLng = new google.maps.LatLng(locations[i][0], locations[i][1]);
+      var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map
+      });
+    }
+  }
+</script>
 
-<% @my_tweets.each do |t| %>
-  <p><%= t.user_name%></p>
-  <p><%= t.post_id%></p>
-  <p><%= t.created_at%></p>
-  <p><%= t.geo_coordinates%></p>
-  <p><%= t.text%></p>
-  <hr />
-<% end %>
-<%= paginate @my_tweets %>
+<div class="row">
+  <div class="large-4 large-centered columns">
+    <h2>Results</h2>
+  </div>
+</div>
+<hr />
+<div class="row">
+  <div class="large-7 columns">
+    <div id="map-canvas"></div>
+  </div>
+  <div class="large-5 columns">
+    <div class="panel tweet-panel">
+
+      <% @my_tweets.each do |t| %>
+        <div class="tweet">
+          <p><%= t.user_name%></p>
+          <p><%= t.post_id%></p>
+          <p><%= t.created_at%></p>
+          <p>(long, lat)<%= t.geo_coordinates%></p>
+          <p><%= t.text%></p>
+        </div>
+        <hr />
+      <% end %>
+    </div>
+    <%= paginate @my_tweets %>
+  </div>
+</div>
