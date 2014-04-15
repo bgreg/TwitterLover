@@ -1,3 +1,37 @@
 // Place all the styles related to the search controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'foundation';
+#map-canvas { width: 500px; height: 800px; }
+
+.tweet-panel{
+  height: 800px;
+  overflow-y: auto;
+}
+
+$pagination-font-size: rem-calc(18);
+nav.pagination{
+  .current{
+      height: auto;
+      padding:  5px;
+      background: $pagination-link-current-background;
+      color:      $pagination-link-current-font-color;
+      font-weight:$pagination-link-current-font-weight;
+  }
+  .page{
+    margin-left: 4px;
+    font-size: $pagination-font-size;
+  }
+  .next{
+    font-size: $pagination-font-size;
+  }
+  .first{
+    font-size: rem-calc(12);
+  }
+  .prev{
+    font-size: $pagination-font-size;
+  }
+  .last{
+    font-size: rem-calc(12);
+  }
+}
