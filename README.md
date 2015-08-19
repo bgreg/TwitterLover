@@ -1,4 +1,3 @@
-######heroku deployment: http://fast-ravine-1177.herokuapp.com/
 
 OSX
 ---
